@@ -1,0 +1,147 @@
+/* Custom styles to complement Tailwind CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #4f46e5;
+  --secondary-color: #818cf8;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+}
+
+/* Navigation styles */
+nav {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+nav a:hover {
+    color: #c7d2fe;
+}
+
+/* Card hover effects */
+.bg-white.rounded-xl.shadow-md {
+    transition: all 0.3s ease;
+}
+
+.bg-white.rounded-xl.shadow-md:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Form input focus effects */
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* Button hover effects */
+button.bg-indigo-600 {
+    transition: all 0.3s ease;
+}
+
+button.bg-indigo-600:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Progress bar animations */
+@keyframes fillProgress {
+    from { width: 0; }
+}
+
+.w-full.bg-gray-200.rounded-full.h-2\.5 div {
+    animation: fillProgress 1s ease-in-out;
+}
+
+/* Table row hover effects */
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Category badges */
+span[class*='bg-'][class*='-100'] {
+    transition: all 0.2s ease;
+}
+
+span[class*='bg-'][class*='-100']:hover {
+    transform: scale(1.05);
+}
+
+/* Footer styling */
+footer {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid.grid-cols-1.lg\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    nav .hidden.md\:flex {
+        display: none;
+    }
+    
+    .mobile-menu-open {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    #mobile-menu {
+        display: none !important;
+    }
+}
+
+/* Animation for dashboard cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid.grid-cols-1.md\:grid-cols-3 > div {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.grid.grid-cols-1.md\:grid-cols-3 > div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.grid.grid-cols-1.md\:grid-cols-3 > div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}

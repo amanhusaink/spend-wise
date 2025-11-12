@@ -1,12 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css"></link>
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker - Transactions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-800">
     
-</body>
+    <header class="flex items-center justify-between px-8 py-4 bg-white border-b">
+      <div class="flex items-center space-x-2">
+        <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+        <span class="text-lg font-semibold">FinanceTracker</span>
+      </div>
+      <nav class="flex space-x-8 text-gray-600 font-medium">
+        <a href="#" class="hover:text-gray-900">Dashboard</a>
+        <a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">Transactions</a>
+        <a href="#" class="hover:text-gray-900">Reports</a>
+      </nav>
+      <button class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
+        </svg>
+      </button>
+    </header>
+
+    <main class="max-w-8xl mx-auto px-8 py-10">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold">All Transactions</h1>
+        <button id="addTransactionBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm">+ Add Transaction</button>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow-sm border mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="flex items-center space-x-2">
+            <input type="date" class="w-full border-gray-300 rounded-lg text-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+            <span class="text-gray-500">-</span>
+            <input type="date" class="w-full border-gray-300 rounded-lg text-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+
+          <select class="w-full border-gray-300 rounded-lg text-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+            <option>All Categories</option>
+          </select>
+
+          <div class="md:col-span-2 flex space-x-2">
+            <input type="text" placeholder="Search by merchant, note..." class="flex-grow border-gray-300 rounded-lg text-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">Apply Filters</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+        <span>Showing <strong>1-10</strong> of <strong>124</strong> transactions</span>
+        <span class="text-red-600 font-medium">Total Spending: -€324.41</span>
+      </div>
+
+      <div class="bg-white border rounded-xl shadow-sm overflow-hidden">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-gray-50 border-b text-gray-600">
+            <tr>
+              <th class="p-4"><input type="checkbox" /></th>
+              <th class="p-4 font-medium">Date</th>
+              <th class="p-4 font-medium">Description</th>
+              <th class="p-4 font-medium">Category</th>
+              <th class="p-4 font-medium">Amount</th>
+              <th class="p-4 font-medium">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="p-4"><input type="checkbox" /></td>
+              <td class="p-4">Oct 26, 2023</td>
+              <td class="p-4">Coffee Shop</td>
+              <td class="p-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Food & Drink</span></td>
+              <td class="p-4 text-red-600">-€5.50</td>
+              <td class="p-4">...</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="p-4"><input type="checkbox" /></td>
+              <td class="p-4">Oct 25, 2023</td>
+              <td class="p-4">Salary Deposit</td>
+              <td class="p-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Income</span></td>
+              <td class="p-4 text-green-600">+€2,500.00</td>
+              <td class="p-4">...</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="p-4"><input type="checkbox" /></td>
+              <td class="p-4">Oct 24, 2023</td>
+              <td class="p-4">Grocery Store</td>
+              <td class="p-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Groceries</span></td>
+              <td class="p-4 text-red-600">-€78.12</td>
+              <td class="p-4">...</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="p-4"><input type="checkbox" /></td>
+              <td class="p-4">Oct 23, 2023</td>
+              <td class="p-4">Gas Station</td>
+              <td class="p-4"><span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Transport</span></td>
+              <td class="p-4 text-red-600">-€45.30</td>
+              <td class="p-4">...</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="p-4"><input type="checkbox" /></td>
+              <td class="p-4">Oct 22, 2023</td>
+              <td class="p-4">Online Shopping</td>
+              <td class="p-4"><span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full">Shopping</span></td>
+              <td class="p-4 text-red-600">-€124.99</td>
+              <td class="p-4">...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex justify-center items-center space-x-2 mt-6 text-sm">
+        <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">&lt;</button>
+        <button class="px-3 py-1 border rounded-lg bg-blue-600 text-white">1</button>
+        <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">2</button>
+        <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">3</button>
+        <span class="text-gray-500">...</span>
+        <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">10</button>
+        <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">&gt;</button>
+      </div>
+    </main>
+
+    <!-- Add Transaction Modal -->
+    <div id="transactionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-xl shadow-lg w-full max-w-md">
+        <div class="border-b p-4 flex justify-between items-center">
+          <h3 class="text-lg font-semibold">Add Transaction</h3>
+          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form id="transactionForm" class="p-6 space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Transaction Type</label>
+            <div class="flex space-x-4">
+              <label class="inline-flex items-center">
+                <input type="radio" name="transactionType" value="income" class="text-blue-600" checked>
+                <span class="ml-2">Income</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="transactionType" value="expense" class="text-blue-600">
+                <span class="ml-2">Expense</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+            <input type="number" id="amount" name="amount" step="0.01" placeholder="0.00" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          
+          <div>
+            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+            <input type="date" id="date" name="date" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          
+          <div>
+            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+            <select id="category" name="category" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+              <option value="">Select a category</option>
+              <optgroup label="Income">
+                <option value="salary">Salary</option>
+                <option value="freelance">Freelance</option>
+                <option value="investment">Investment</option>
+                <option value="other-income">Other Income</option>
+              </optgroup>
+              <optgroup label="Expense">
+                <option value="food">Food & Dining</option>
+                <option value="groceries">Groceries</option>
+                <option value="transport">Transportation</option>
+                <option value="utilities">Utilities</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="shopping">Shopping</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="other-expense">Other Expense</option>
+              </optgroup>
+            </select>
+          </div>
+          
+          <div>
+            <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Add notes (optional)" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+          </div>
+          
+          <div class="flex justify-end space-x-3 pt-4">
+            <button type="button" id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Cancel</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Save Transaction</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Get DOM elements
+      const addTransactionBtn = document.getElementById('addTransactionBtn');
+      const transactionModal = document.getElementById('transactionModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const transactionForm = document.getElementById('transactionForm');
+      
+      // Show modal when Add Transaction button is clicked
+      addTransactionBtn.addEventListener('click', () => {
+        transactionModal.classList.remove('hidden');
+      });
+      
+      // Hide modal when close button is clicked
+      closeModalBtn.addEventListener('click', () => {
+        transactionModal.classList.add('hidden');
+      });
+      
+      // Hide modal when cancel button is clicked
+      cancelBtn.addEventListener('click', () => {
+        transactionModal.classList.add('hidden');
+      });
+      
+      // Hide modal when clicking outside the modal content
+      window.addEventListener('click', (event) => {
+        if (event.target === transactionModal) {
+          transactionModal.classList.add('hidden');
+        }
+      });
+      
+      // Handle form submission
+      transactionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // In a real application, you would process the form data here
+        // For now, we'll just close the modal
+        transactionModal.classList.add('hidden');
+        // Reset form
+        transactionForm.reset();
+      });
+      
+      // Set today's date as default
+      document.getElementById('date').valueAsDate = new Date();
+    </script>
+  </body>
 </html>
