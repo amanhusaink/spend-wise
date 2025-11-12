@@ -18,11 +18,14 @@
         <a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">Transactions</a>
         <a href="#" class="hover:text-gray-900">Reports</a>
       </nav>
-      <button class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
-        </svg>
-      </button>
+      <div class="flex items-center space-x-3">
+
+        <button class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </button>
+      </div>
     </header>
 
     <main class="max-w-8xl mx-auto px-8 py-10">
@@ -122,121 +125,5 @@
         <button class="px-3 py-1 border rounded-lg text-gray-600 hover:bg-gray-100">&gt;</button>
       </div>
     </main>
-
-    <!-- Add Transaction Modal -->
-    <div id="transactionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-      <div class="bg-white rounded-xl shadow-lg w-full max-w-md">
-        <div class="border-b p-4 flex justify-between items-center">
-          <h3 class="text-lg font-semibold">Add Transaction</h3>
-          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <form id="transactionForm" class="p-6 space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Transaction Type</label>
-            <div class="flex space-x-4">
-              <label class="inline-flex items-center">
-                <input type="radio" name="transactionType" value="income" class="text-blue-600" checked>
-                <span class="ml-2">Income</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input type="radio" name="transactionType" value="expense" class="text-blue-600">
-                <span class="ml-2">Expense</span>
-              </label>
-            </div>
-          </div>
-          
-          <div>
-            <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
-            <input type="number" id="amount" name="amount" step="0.01" placeholder="0.00" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
-          </div>
-          
-          <div>
-            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
-            <input type="date" id="date" name="date" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
-          </div>
-          
-          <div>
-            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-            <select id="category" name="category" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
-              <option value="">Select a category</option>
-              <optgroup label="Income">
-                <option value="salary">Salary</option>
-                <option value="freelance">Freelance</option>
-                <option value="investment">Investment</option>
-                <option value="other-income">Other Income</option>
-              </optgroup>
-              <optgroup label="Expense">
-                <option value="food">Food & Dining</option>
-                <option value="groceries">Groceries</option>
-                <option value="transport">Transportation</option>
-                <option value="utilities">Utilities</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="shopping">Shopping</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="other-expense">Other Expense</option>
-              </optgroup>
-            </select>
-          </div>
-          
-          <div>
-            <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-            <textarea id="notes" name="notes" rows="3" placeholder="Add notes (optional)" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
-          </div>
-          
-          <div class="flex justify-end space-x-3 pt-4">
-            <button type="button" id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Cancel</button>
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Save Transaction</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <script>
-      // Get DOM elements
-      const addTransactionBtn = document.getElementById('addTransactionBtn');
-      const transactionModal = document.getElementById('transactionModal');
-      const closeModalBtn = document.getElementById('closeModalBtn');
-      const cancelBtn = document.getElementById('cancelBtn');
-      const transactionForm = document.getElementById('transactionForm');
-      
-      // Show modal when Add Transaction button is clicked
-      addTransactionBtn.addEventListener('click', () => {
-        transactionModal.classList.remove('hidden');
-      });
-      
-      // Hide modal when close button is clicked
-      closeModalBtn.addEventListener('click', () => {
-        transactionModal.classList.add('hidden');
-      });
-      
-      // Hide modal when cancel button is clicked
-      cancelBtn.addEventListener('click', () => {
-        transactionModal.classList.add('hidden');
-      });
-      
-      // Hide modal when clicking outside the modal content
-      window.addEventListener('click', (event) => {
-        if (event.target === transactionModal) {
-          transactionModal.classList.add('hidden');
-        }
-      });
-      
-      // Handle form submission
-      transactionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // In a real application, you would process the form data here
-        // For now, we'll just close the modal
-        transactionModal.classList.add('hidden');
-        // Reset form
-        transactionForm.reset();
-      });
-      
-      // Set today's date as default
-      document.getElementById('date').valueAsDate = new Date();
-    </script>
   </body>
 </html>
